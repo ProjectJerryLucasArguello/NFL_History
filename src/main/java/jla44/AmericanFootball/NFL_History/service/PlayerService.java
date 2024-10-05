@@ -57,6 +57,13 @@ public class PlayerService {
                 .collect(Collectors.toList());
     }
 
+    public List<NFLPlayer> getTeamBySeason(String team, Integer season){
+        return repo.findAll().stream()
+                .filter(nflPlayer -> team.equalsIgnoreCase(nflPlayer.getTeam())
+                        && season.equals(nflPlayer.getSeason()))
+                .collect(Collectors.toList());
+    }
+
     public NFLPlayer addPlayer(NFLPlayer nflPlayer){
         repo.save(nflPlayer);
         return nflPlayer;

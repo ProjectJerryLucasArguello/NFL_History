@@ -29,6 +29,8 @@ public class PlayerController {
             @RequestParam(required = false) String position){
         if(name != null && season != null){
             return playerService.getPlayersByNameAndSeason(name, season);
+        } else if (team != null && season != null) {
+            return playerService.getTeamBySeason(team, season);
         } else if (position !=null) {
             return playerService.getPlayersFromPosition(position);
         } else if (season != null) {
